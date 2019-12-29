@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字跑马灯效果</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <style type="text/css">
+    	.w100{width: 100px!important}
+    	.w200{width: 200px!important}
+    	.form-horizontal .form-group{margin-right:0; margin-left:0;}
+    	.form-group-np .col-xs-1,
+		.form-group-np .col-xs-2{ padding-right: 0; padding-left: 0; }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<div align="center" id="demo" style="overflow:hidden; width:620px; margin: 50px auto;">
+    <div id="words-wrap" style="border: 1px solid #000; position:relative; overflow:hidden; height: 60px; margin-bottom: 15px;">
+    	<div id="words" style="line-height:60px; font-weight:bold; position:absolute; display:inline-block; width: auto; white-space:nowrap;">
+    		欢迎来到跑马灯管理员控制页面
+    	</div>
+    </div>
+	<div class="form-horizontal" style="border: 1px solid #ddd; padding-top:15px;">
+		<div class="form-group form-group-sm form-group-np clearfix">
+		    <label class="col-xs-2 control-label w100">滚动方向：</label>
+			<div class='col-xs-2 w200'>
+				<select id="gd_fx" class="form-control input-sm">
+					<option value="ltr">从左向右</option>
+					<option value="rtl" selected>从右向左</option>
+				</select>
+			</div>			
+			<label class="col-xs-2 control-label w100">滚动速度：</label>
+			<div class="col-xs-2 w200">
+				<select id="gd_speed" class="form-control input-sm">
+					<option value="200">很快</option>
+					<option value="300">快</option>
+					<option value="500" selected>适中</option>
+					<option value="1000">慢</option>
+					<option value="2000">很慢</option>
+				</select>				
+			</div>
+		</div>
+		<div class="form-group form-group-sm form-group-np clearfix">
+			<label class="col-xs-2 control-label w100">文字颜色：</label>
+			<div class='col-xs-2 w200'>
+				<input id="font_color" type="color" class="form-control input-sm" placeholder="文字颜色" value="#ff0000" />
+			</div>
+			<label class="col-xs-2 control-label w100">文字大小：</label>
+			<div class='col-xs-2 w200'>
+				<select id="font_size" class="form-control input-sm">
+					<option value="14px">14px</option>
+					<option value="16px" selected>16px</option>
+					<option value="18px">18px</option>
+					<option value="20px">20px</option>
+					<option value="24px">24px</option>
+					<option value="30px">30px</option>
+				</select>
+			</div>					
+		</div>
+		<div class="form-group form-group-sm form-group-np clearfix">
+			<label class="col-xs-2 control-label w100">文字大小：</label>
+			<div class='col-xs-2' style="width: 500px;">
+				<input id="words_desc" type="text" class="form-control input-sm" placeholder="文字描述"></input>
+			</div>
+		</div>
+		<div class="form-group form-group-sm form-group-np clearfix">
+			<div class='col-xs-2' style="width: 100%; padding:0 18px;">
+				<button type="button" class="btn btn-primary" style="width:535px" onclick="start();">
+					<span class="fa fa-check" style="margin-right: 5px;"></span>确 定</button>
+					
+				<button type="button" class="btn btn-default" style="width:40px;" onclick="stopOrPlay(this);">
+					<span class="fa fa-stop"></span></button>
+			</div>
+		</div>
+	</div>
+</div>
+<script language="javascript" type="text/javascript">
+	var interval = 0, step = 20, tw = 620, twpx = "620px";
+	var gd_fx = $("#gd_fx").val(), gd_speed = $("#gd_speed").val();
+	var $words = $("#words"), words_width = $("#words").outerWidth();
+	
+	var marquee = function () {
+		var v = 0;
+		if(gd_fx == "ltr") {
+			v = parseFloat($words.css("right")) - step;
+			$words.css("right", v);
+			if(v + words_width < 0) {
+				$words.css("right", tw);
+			}
+		} else {
+			v = parseFloat($words.css("left")) - step;
+			$words.css("left", v);
+			if(v + words_width < 0) {
+				$words.css("left", tw);
+			}
+		}
+	}	
+	function start() {
+		if(interval) clearInterval(interval);
+		
+		var font_color = $("#font_color").val() || "red";
+		var font_size = $("#font_size").val();
+		var words_desc = $("#words_desc").val() || "HTML5是一个丰富的应用，可以给用户很多视觉上的享受！";
+		gd_fx = $("#gd_fx").val(), gd_speed = $("#gd_speed").val();
+		//
+		$words.text(words_desc);
+		words_width = $words.outerWidth();
+		if(gd_fx == "ltr") {
+			$words.css({right: twpx, left:"auto"});
+		} else {
+			$words.css({left: twpx, right:"auto"});
+		}
+		$words.css({"font-size": font_size, "color": font_color});
+		
+		interval = setInterval(marquee, gd_speed); 
+	}
+	function stopOrPlay(obj) {
+		var $fa = $(obj).find(".fa");
+		if($fa.hasClass('fa-stop')) {
+			$fa.removeClass('fa-stop').addClass('fa-play');
+			if(interval) clearInterval(interval);
+		} else {
+			$fa.removeClass('fa-play').addClass('fa-stop');
+			if(interval) clearInterval(interval);
+			interval = setInterval(marquee, gd_speed); 
+		}
+	}
+	$(function() {
+		start();
+	});
+</script>
+</body>
+</html>
