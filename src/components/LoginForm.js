@@ -2,18 +2,75 @@ import React, { Component } from 'react';
 import '../assets/css/login.css';
 
 import {Link} from 'react-router-dom'
-
+import  { Input,Button,message,script} from 'antd';
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {}}
+        this.state = {}
+    }
+    changeValue=(e)=>{
+        this.setState(
+            {
+                [e.target.name]:e.target.value
+            }
+        )}
+        Upload = () =>{
+               //xhr
+            var xhr = new XMLHttpRequest()
+            var data={
+                "username":this.state.username,
+                "password":this.state.password,
+                // "gender":this.state.gender,
+                // "age":this.state.age,
+                // "address":this.state.address,
 
 
+        }
+        
+            //open连接
+            xhr.open("post","/user/login")
+            //配件响应函数
+            xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4){
+                                if(xhr.status==200){
+                                       
+                                        console.log(xhr.responseText)
+                               var result = JSON.parse( xhr.responseText)
+                                        if(result.state==2
+
+                                 ){message.info("用户名已存在")
+
+                                 }else if(result.state==1){message.info("注册成功")
+
+                                 }  
+                                    }else{
+                                    message.info(xhr.status)
+                                }
+                    }
+            }
+            //发送数据
+            xhr.setRequestHeader('content-type','application/json');
+            xhr.send(JSON.stringify(data))
+
+            //fetch
+
+		
+	
+            
+
+        }
+
+    
+
+
+
+
+    
 
 
         
- render(){ 
+ render(){
      
     window.onload=function(){
     createCode(4);    
@@ -44,34 +101,30 @@ class LoginForm extends Component {
            checkCode.innerHTML = code;
        }
    }
-   
+//    function validateCode() {
 
-//    function ulogin() {
-				
-//     var userName = document.getElementById("uName").value;
-//     var userPass = document.getElementById("uPass").value;
-    
-//     if (userPass == "123" && userName == "帅气的小鹏") {
-//         alert("登陆成功");
-//         window.location.href='欢迎界面2.html'
-//     } 
-//     else if (userName == "" || userName == null) {
-//         alert("用户名不能为空");
-//         return false;
-//     } 
-//     else if (userPass == "" || userPass == null) {
-//         alert("密码不能为空");
-//         return false;
-//     } 
-//     else if (userPass != "root" || userName != "root") {
-//         alert("用户名或密码错误");
-//         return false;
-//     } 
-//     else{
-//         return true;
-//     }
-        
-// }
+//  //获取显示区生成的验证码
+//  var checkCode = document.getElementById("checkCode").innerHTML;
+//  //获取输入的验证码
+//  var inputCode = document.getElementById("inputCode").value;
+//  console.log(checkCode);
+//  console.log(inputCode);
+//  if (inputCode.length <= 0)
+//  {
+//      alert("请输入验证码！");
+//  }
+//  else if (inputCode.toUpperCase() != checkCode.toUpperCase())
+//  {
+//      alert("验证码输入有误！");
+//      createCode(4);
+//  }
+//  else
+//  {
+//      alert("验证码正确！");
+//  }       
+       
+//    }
+
 
 
     return(
@@ -82,22 +135,25 @@ class LoginForm extends Component {
             <p class="div104">密码</p>
              <p class="div120">验证码： </p>
             <p class="div105">忘记秘密？</p>
-            <input type="checkbox" class="div106"></input> 
-            <input type="text" placeholder="请输入用户名" class="div108" id="uName"></input>
-            <input type="text" placeholder="请输入密码" class="div109" id="uPass"></input>  
+            <input type="checkbox" class="div106"  ></input> 
+            <input type="text" placeholder="请输入用户名" class="div108" name="username" id="username" value={this.state.username} 
+            onChange={e=>this.changeValue(e) }/>
+            <input type="text" placeholder="请输入密码" class="div109" name="password" id="password" value={this.state.password}
+             onChange={e=>this.changeValue(e)}></input>  
             <input type="text" id="inputCode" placeholder="请输入验证码" class="div121"/>
         
-            <td> <div id="checkCode"  class="code"  onclick="createCode(4)" ></div></td>
-            {/* <td> <span onclick="createCode(4)">看不清换一张</span></td> */}
+            <td> <div id="checkCode"  class="code"  onclick="reateCode(4)" ></div></td>
+       
 
             <p class="div107">自动登录</p>
-            <button class="div110"  onclick="" >登录</button>
+            <Button class="div110"  onClick={this.Upload} >登录</Button>
           
            
            
       
            
         </div>
+        
     )
  }
 
