@@ -57,7 +57,7 @@ fetch("/back/getname",{
     
     render() {
         return ( 
-          <div> <div><ul class="bbb4">在 线 下 单</ul></div>
+          <div  class="beijing3"> <div><ul class="bbb4">在 线 下 单</ul></div>
 	   
             <div class="logoBar">
 <div>

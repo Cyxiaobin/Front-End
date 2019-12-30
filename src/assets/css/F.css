@@ -104,3 +104,16 @@ body {
     font-size: .2em;
     color: #f00;
 }
+.beijing{
+
+    background-image: url(../images/beijing.jpg) ;
+    background-repeat: no-repeat;
+    height: 850px;
+    
+}
+.beijing2{
+    background-image: url(../images/beijing2.jpg) ;
+    background-repeat: no-repeat;
+
+    height: 850px;
+}

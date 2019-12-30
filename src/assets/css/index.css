@@ -375,3 +375,10 @@ position: absolute; top: 15px; left: 250px;
    
     
 }
+.beijing3{
+  background-image: url(../images/beijing3.jpg);
+  background-repeat: no-repeat;
+  height: 830px;
+  width: 100%;
+
+}

@@ -45,7 +45,7 @@ class Home extends Component {
         <div class="bangzhu"><ul>帮助中心</ul></div>
         </Link> 
         
-        <Link to="/F/" style={{color:'black'}}>
+        <Link to="/ReactForm/" style={{color:'black'}}>
         <div class="denglu"><ul>登录</ul></div>
         </Link>
 
@@ -66,7 +66,7 @@ class Home extends Component {
         
        <div class="foot">
          <p><a>希望hope跑腿服务信息服务平台：</a>
-        <Link to="/Page1/" style={{color:'black'}}>
+        <Link to="/small/简介/" style={{color:'black'}}>
         <div  class=" aaa1"><ul>代拿简介</ul> </div>
         </Link>
         <Link to="/Page2/" style={{color:'black'}}>
