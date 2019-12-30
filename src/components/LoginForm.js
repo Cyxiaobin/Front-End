@@ -28,33 +28,25 @@ class LoginForm extends Component {
 
         }
         
-            //open连接
-            xhr.open("post","/user/login")
-            //配件响应函数
-            xhr.onreadystatechange=function () {
-                    if(xhr.readyState==4){
-                                if(xhr.status==200){
-                                       
-                                        console.log(xhr.responseText)
-                               var result = JSON.parse( xhr.responseText)
-                                        if(result.state==2
-
-                                 ){message.info("用户名已存在")
-
-                                 }else if(result.state==1){message.info("注册成功")
-
-                                 }  
-                                    }else{
-                                    message.info(xhr.status)
-                                }
-                    }
-            }
-            //发送数据
-            xhr.setRequestHeader('content-type','application/json');
-            xhr.send(JSON.stringify(data))
-
+         
             //fetch
+fetch("/user/Login",{
 
+
+    method:"post",
+    herders:{
+        "Content-Type":"application/json"
+
+    },
+    bode:JSON.stringify(data)
+}).then(response=>response.json())
+.then(result=>{
+    if(result.state==2){
+        message.info("用户名错误")
+    }else if(result.state==1){
+        message.info("密码错误")
+    }
+})
 		
 	
             

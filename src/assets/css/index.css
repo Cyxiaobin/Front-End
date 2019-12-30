@@ -349,3 +349,29 @@ position: absolute; top: 15px; left: 250px;
 .t_subtotal{
     width:123px;
 }
+
+.pb_10{
+  padding-bottom:10px;
+}
+.own{
+  border:solid 2px rgb(248, 242, 242);
+  padding:20px 5px 20px 40px;
+  width:748px;
+  margin:40 0 0 500;
+  letter-spacing: 180px;
+ 
+
+}
+.own label{
+ letter-spacing: 5px;
+}
+.bbb4{
+  position: absolute;
+   padding-left: 800px;
+   padding-top: 30px;
+   font-size: 40px;
+   font-family: 'Times New Roman', Times, serif
+   ;
+   
+    
+}

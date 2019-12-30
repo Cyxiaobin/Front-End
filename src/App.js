@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm.js';
 import ReactForm from './components/ReactForm.js';
 import Zaixianxiadan from './components/Zaixianxiadan.js';
 import Pcontent from './components/Pcontent.js';
+import F from './components/F.js';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
            <Route  path="/LoginForm" component={LoginForm}></Route>
            <Route  path="/Zaixianxiadan" component={Zaixianxiadan}></Route>
            <Route  path="/Pcontent" component={Pcontent}></Route>
+           <Route path="/F" component={F}></Route>
          
          </Switch>
  

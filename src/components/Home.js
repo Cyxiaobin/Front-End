@@ -45,11 +45,11 @@ class Home extends Component {
         <div class="bangzhu"><ul>帮助中心</ul></div>
         </Link> 
         
-        <Link to="/Page5/" style={{color:'black'}}>
+        <Link to="/F/" style={{color:'black'}}>
         <div class="denglu"><ul>登录</ul></div>
         </Link>
 
-        <Link to="/Page6/" style={{color:'black'}}>
+        <Link to="/F/" style={{color:'black'}}>
         <div class="zhuce"><ul>注册</ul></div>
         </Link>
         </div>
