@@ -9,6 +9,14 @@
 .show{display:block;}
 
 /* 首页 */
+.beijing5{
+  background-image: url(../images/beijing.jpg);
+}
+.biaoti{
+  text-align: center;
+  font-size: 50px;
+  padding-top: 30%;
+}
 
 .header{
   height: 75px; 
@@ -83,9 +91,10 @@
   margin: 180px auto;
 }
 #intro{
-  margin: 20px 100px 100px 100px;
+ 
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
+  padding-top: 35%;
 }
 
 #account {

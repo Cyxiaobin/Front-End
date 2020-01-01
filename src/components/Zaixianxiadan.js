@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '..//assets/css/index.css'
 import  { Input,Button,message,script} from 'antd';
 import { Link } from 'react-router-dom';
-import '..//assets/css/reset.css'
+
 class Zaixianxiadan extends Component {
     constructor(props) {
         super(props);
@@ -68,7 +68,7 @@ fetch("/back/getname",{
   </p> </div>
  
   <div className="logo_o"><img src={require('../assets/images/step.jpg')} alt=""/></div>
-  <li class="s03">订单提交成功</li>
+  <li class="s03">订单提交中</li>
   
         </div>
 

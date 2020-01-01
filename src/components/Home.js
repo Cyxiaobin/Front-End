@@ -25,8 +25,8 @@ class Home extends Component {
 
 
 
-<div>
-        <div class="herder">
+<div  class="beijing5">
+        <div class="herder"  >
        
         <div class="logo_i">
         <img src={require('../assets/images/logo_i.jpg')} alt=""/>
@@ -58,7 +58,7 @@ class Home extends Component {
 <div id="page1"> 
 <div class="shadow">
   <div class="content">
-    <h1> HOPE跑腿网</h1> 
+    <h1 class="biaoti"> H  O  P  E  跑  腿  网</h1> 
     <p id="intro">Welcome to the Hope></p>
     </div></div> </div>
 
@@ -66,16 +66,16 @@ class Home extends Component {
         
        <div class="foot">
          <p><a>希望hope跑腿服务信息服务平台：</a>
-        <Link to="/small/简介/" style={{color:'black'}}>
+        <Link to="/Jie" style={{color:'black'}}>
         <div  class=" aaa1"><ul>代拿简介</ul> </div>
         </Link>
-        <Link to="/Page2/" style={{color:'black'}}>
+        <Link to="/Tps" style={{color:'black'}}>
         <div class="aaa2"><ul>代拿公告</ul></div>
         </Link>
-        <Link to="/Page3/" style={{color:'black'}}>
-        <div class="aaa3"><ul>招纳贤士</ul></div>
+        <Link to="/Hel" style={{color:'black'}}>
+        <div class="aaa3"><ul>寻找帮助</ul></div>
         </Link>
-        <Link to="/Page4/" style={{color:'black'}}>
+        <Link to="/Cone" style={{color:'black'}}>
         <div class="aaa4" ><ul>联系我们</ul></div>
         </Link> 
         </p>
