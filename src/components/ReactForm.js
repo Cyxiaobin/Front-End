@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
  import '../assets/css/F.css';
-import  { Input,Button,message,script} from 'antd';
+import  { input,Button,message,script} from 'antd';
 
 
 class ReactForm extends Component {
@@ -17,53 +17,75 @@ class ReactForm extends Component {
       }
       Upload = () =>{
         //xhr
-   
+   var xhr = new XMLHttpRequest()
      var data={
          "password":this.state.password,
                 "username":this.state.username,
                
   
   }
-  fetch("/user/login",{
+//   fetch("/user/login",{
 
 
-    method:"post",
-    data:data,
+//     method:"post",
+//     data:data,
   
-    herders:{
-        "Content-Type":"application/json"
+//     herders:{
+//         "Content-Type":"application/json"
   
-    },
-    body:JSON.stringify(data)
-  }).then(response=>response.json())
-  .then(result=>{
-    if(result.state==2){
-        message.info("登录失败")
-    }else if(result.state==1){
-        message.info("登录成功")
-    }
-  }).catch(e=>{
-    message.error(e)
-  })
+//     },
+//     body:JSON.stringify(data)
+//   }).then(response=>response.json())
+//   .then(result=>{
+//     if(result.state==2){
+//         message.info("登录失败")
+//     }else if(result.state==1){
+//         message.info("登录成功")
+//     }
+//   }).catch(e=>{
+//     message.error(e)
+//   })
     
   
             
   
-        }
+//         }
    
             //fetch
 
-		
 	
-            
+                xhr.open("post","/user/login")
+                
+                xhr.onreadystatechange = function (  ) {
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            console.log(xhr.responseText)
+                            var result = JSON.parse(xhr.responseText)
+                            if(result.state==2){
+                                message.info("用户名或密码错误！")
+                                message.info(xhr.responseText)
+        
+                            }else if(result.state==1){
+                                message.info("登录成功")
+                                message.info(xhr.responseText)
+                            }
+                        }else{
+        
+                        }
+                    }
+                    }
+                    xhr.setRequestHeader('content-type','application/json');
+                    xhr.send(JSON.stringify(data))
+                    
+                }
 
      
     
+            
 
 
 
-
-
+        
     render() {
         return (
             <div class="beijing">
@@ -90,7 +112,7 @@ class ReactForm extends Component {
             <div class="content-login-description">没有账户？立即注册
               
 <Link to="/F/" style={{color:'black'}}>
-<div  type="button"><ul>立即注册</ul></div>
+<div  type="Button"><ul>立即注册</ul></div>
 </Link>
 </div>
 </div>
